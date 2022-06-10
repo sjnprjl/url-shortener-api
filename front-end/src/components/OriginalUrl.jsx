@@ -10,7 +10,7 @@ const Text404 = styled.h1`
 `;
 const TextSmall = styled(Text404).attrs({ as: "span" })`
   font-size: 2rem;
-  color: ${p => p.theme.accent[1]};
+  color: ${(p) => p.theme.accent[1]};
 `;
 
 const Container = styled.div`
@@ -33,9 +33,8 @@ export const OriginalUrl = () => {
   const { shortUrl } = useParams();
   const [status, setStatus] = useState(null);
   const [originalUrl, setOriginalUrl] = useState(null);
-  const [message, setMessage] = useState(null);
   const response = fetchData(
-    "http://localhost:8080/api/v1/original-url",
+    `${process.env.REACT_APP_API_ENDPOINT}/original-url`,
     "POST",
     { shortUrl }
   );
@@ -44,7 +43,6 @@ export const OriginalUrl = () => {
     const res = data.json();
     res.then((c) => {
       setOriginalUrl(c.redirectUrl);
-      setMessage(c.message);
     });
   });
 
