@@ -4,7 +4,7 @@ import { validUrl, validShortUrl } from "../middlewares/api.middleware.js";
 
 export const router = Router();
 
-router.post("/url-short", validUrl, urlShortenerController);
-router.post("/original-url", validShortUrl, (req, res) => {
+router.post("/shorten", validUrl, urlShortenerController);
+router.get("/original/:shortUrl", validShortUrl, (req, res) => {
     res.status(200).send({redirectUrl: req.redirectUrl});
 });
