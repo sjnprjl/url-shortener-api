@@ -1,10 +1,12 @@
 export const fetchData = async (url, method, payload) => {
-  const config = {
+  let config = {
     headers: {
       "Content-Type": "application/json",
     },
     method,
-    body: JSON.stringify(payload),
   };
+  if (method === "POST") {
+    config = { ...config, body: JSON.stringify(payload) };
+  }
   return await fetch(url, config);
 };
