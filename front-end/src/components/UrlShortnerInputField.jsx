@@ -4,7 +4,7 @@ import { useState } from "react";
 import styled, { useTheme } from "styled-components";
 import { Search, ArrowRight, Loader } from "react-feather";
 
-const FieldStyle = styled.div`
+const FieldStyle = styled.form`
   background: ${(p) => p.theme.light};
   border-radius: 4rem;
   display: flex;
@@ -41,15 +41,18 @@ export const UrlShortnerInputField = ({ handleClick, loading }) => {
 
   const [inputValue, setValue] = useState("");
   return (
-    <FieldStyle width={"50%"}>
+    <FieldStyle width={"50%"} onSubmit={(e) => e.preventDefault()}>
       <Search color={theme.accent[1]} />
       <InputField
         value={inputValue}
         onChange={(e) => setValue(e.target.value)}
         placeholder="Enter your url. https://example.com"
+        onFocus={(e) => e.target.select()}
       />
       <Button
-        onClick={(e) => handleClick({ url: inputValue })}
+        onClick={(e) => {
+          return handleClick({ url: inputValue })
+        }}
         disabled={loading}
       >
         Short URL {(loading && <Loader />) || <ArrowRight />}
