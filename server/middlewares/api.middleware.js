@@ -14,7 +14,7 @@ export const validUrl = (req, res, next) => {
 };
 
 export const validShortUrl = async (req, res, next) => {
-  const { shortUrl } = req.body;
+  const { shortUrl } = req.params;
   if (!shortUrl)
     return res.status(400).send({ message: "Please provide payload" });
   try {
