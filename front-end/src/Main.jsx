@@ -62,7 +62,7 @@ export const Main = () => {
       const response = await fetchData(endPoint, "POST", payload);
       const data = await response.json();
       setError(response.status !== 200 ? data.message : null);
-      const origin = "http://localhost:3000";
+      const origin = "http://localhost:" + process.env.REACT_APP_PORT;
       setData(`${origin}/${data.shortUrl}`);
       setLoading(false);
     } catch (err) {
