@@ -34,11 +34,11 @@ export const OriginalUrl = () => {
   const [status, setStatus] = useState(null);
   const [originalUrl, setOriginalUrl] = useState(null);
   const response = fetchData(
-    `${process.env.REACT_APP_API_ENDPOINT}/original-url`,
-    "POST",
-    { shortUrl }
+    `${process.env.REACT_APP_API_ENDPOINT_ORIGINAL_URL}/${shortUrl}`,
+    "GET"
   );
   response.then((data) => {
+    console.log(data);
     setStatus(data.status);
     const res = data.json();
     res.then((c) => {
