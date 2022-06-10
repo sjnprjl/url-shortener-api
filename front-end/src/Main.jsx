@@ -56,7 +56,7 @@ export const Main = () => {
   const [copied, setCopied] = useState(false);
 
   async function handleClick(payload) {
-    const endPoint = `${process.env.REACT_APP_API_ENDPOINT}/url-short`;
+    const endPoint = `${process.env.REACT_APP_API_ENDPOINT_SHORT_URL}`;
     setLoading(true);
     try {
       const response = await fetchData(endPoint, "POST", payload);
@@ -66,7 +66,7 @@ export const Main = () => {
       setData(`${origin}/${data.shortUrl}`);
       setLoading(false);
     } catch (err) {
-      console.log(err, `${process.env.REACT_APP_API_ENDPOINT}/url-short`);
+      console.log(err, `${process.env.REACT_APP_API_ENDPOINT_SHORT_URL}`, process.env);
       setError("Something went terribly wrong...");
       setLoading(false);
     }
