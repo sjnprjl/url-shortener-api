@@ -7,7 +7,8 @@ The functionality of the shortener is simple. It first get the `url` from the cl
 ### Create short url
 `POST` `/api/v1/shorten`
 <br>
-`body`
+<br>
+body
 ```json
 {
     "url": "https://example.com"
